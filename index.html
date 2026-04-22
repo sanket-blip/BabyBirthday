@@ -4,340 +4,202 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Happy Birthday My Love 🎂❤️</title>
-  
+  <meta name="theme-color" content="#ff4d8d" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.4/dist/full.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
   <style>
-    :root {
-      --pink: #ff4d8d;
-      --purple: #1d1230;
-      --glass: rgba(255, 255, 255, 0.1);
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-      color: white;
-      overflow-x: hidden;
-      min-height: 100vh;
-    }
-
-    /* Glassmorphism */
-    .glass-card {
-      background: var(--glass);
-      backdrop-filter: blur(15px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 24px;
-      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    }
-
-    /* Floating Animations */
-    .floating {
-      animation: float 6s ease-in-out infinite;
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
-    }
-
-    .heart {
-      position: fixed;
-      font-size: 20px;
-      color: #ff4d8d;
-      pointer-events: none;
-      z-index: 0;
-      animation: heartFall 5s linear forwards;
-    }
-    @keyframes heartFall {
-      to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
-    }
-
-    .balloon {
-      position: absolute;
-      width: 40px;
-      height: 50px;
-      background: var(--pink);
-      border-radius: 50%;
-      animation: rise 10s infinite ease-in;
-      opacity: 0.7;
-    }
-    @keyframes rise {
-      from { transform: translateY(100vh); }
-      to { transform: translateY(-20vh); }
-    }
-
-    /* Cake Styling */
-    .cake-container {
-      position: relative;
-      width: 200px;
-      height: 200px;
-      margin: auto;
-    }
-    .cake {
-      position: absolute;
-      bottom: 0;
-      width: 160px;
-      height: 100px;
-      background: #f48fb1;
-      border-radius: 10px 10px 0 0;
-      left: 20px;
-      box-shadow: inset 0 -10px rgba(0,0,0,0.1);
-    }
-    .candle {
-      position: absolute;
-      bottom: 100px;
-      left: 95px;
-      width: 10px;
-      height: 40px;
-      background: #fff;
-      border-radius: 4px;
-    }
-    .flame {
-      position: absolute;
-      top: -15px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 15px;
-      height: 20px;
-      background: orange;
-      border-radius: 50% 50% 20% 20%;
-      box-shadow: 0 0 15px orange;
-      animation: flicker 0.5s infinite alternate;
-    }
-    @keyframes flicker {
-      from { opacity: 0.8; transform: translateX(-50%) scale(1); }
-      to { opacity: 1; transform: translateX(-50%) scale(1.1); }
-    }
-
-    /* Photo Gallery */
-    .photo-grid img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-      border-radius: 15px;
-      transition: transform 0.3s ease;
-      cursor: pointer;
-    }
-    .photo-grid img:hover {
-      transform: scale(1.05);
-      border: 3px solid var(--pink);
-    }
-
-    /* Custom Toast */
-    #toast {
-      visibility: hidden;
-      min-width: 250px;
-      background-color: var(--pink);
-      color: #fff;
-      text-align: center;
-      border-radius: 50px;
-      padding: 16px;
-      position: fixed;
-      z-index: 100;
-      left: 50%;
-      bottom: 30px;
-      transform: translateX(-50%);
-    }
-    #toast.show {
-      visibility: visible;
-      animation: fadeInOut 3s;
-    }
-    @keyframes fadeInOut {
-      0% { opacity: 0; bottom: 0; }
-      20% { opacity: 1; bottom: 30px; }
-      80% { opacity: 1; bottom: 30px; }
-      100% { opacity: 0; bottom: 0; }
-    }
+    :root{--pink:#ff4d8d;--pink2:#ff8fb8;--glass:rgba(255,255,255,.1)}
+    *{box-sizing:border-box}
+    html,body{width:100%;min-height:100%;margin:0;padding:0}
+    body{font-family:'Poppins',sans-serif;color:#fff;overflow-x:hidden;background:radial-gradient(circle at 15% 20%, rgba(255,77,141,.22), transparent 20%),radial-gradient(circle at 80% 10%, rgba(255,190,220,.12), transparent 18%),radial-gradient(circle at 50% 85%, rgba(181,123,255,.18), transparent 24%),linear-gradient(135deg,#12091f 0%,#1d1230 45%,#35153f 100%)}
+    .glass-card{background:var(--glass);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.16);border-radius:24px;box-shadow:0 12px 45px rgba(0,0,0,.28)}
+    .glow{text-shadow:0 0 18px rgba(255,77,141,.45)}
+    .floating{animation:float 6s ease-in-out infinite}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+    .heart{position:fixed;top:-20px;z-index:1;pointer-events:none;animation:fall linear forwards;font-size:20px}
+    @keyframes fall{to{transform:translateY(110vh) rotate(360deg);opacity:0}}
+    .balloon{position:absolute;width:48px;height:62px;border-radius:50%;opacity:.75;animation:rise 12s linear infinite}
+    .balloon::after{content:"";position:absolute;left:50%;top:60px;width:2px;height:55px;background:rgba(255,255,255,.55)}
+    @keyframes rise{0%{transform:translateY(110vh)}100%{transform:translateY(-20vh)}}
+    .btn-pink{background:linear-gradient(135deg,var(--pink),var(--pink2));color:#fff;border:none}
+    .count{min-width:78px;padding:12px 14px;border-radius:18px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12)}
+    .cake-wrap{display:flex;justify-content:center;align-items:center;min-height:250px}
+    .cake{position:relative;width:240px;height:210px;filter:drop-shadow(0 18px 24px rgba(0,0,0,.22))}
+    .cake .plate{position:absolute;left:50%;bottom:8px;transform:translateX(-50%);width:220px;height:18px;border-radius:999px;background:linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.55));box-shadow:0 8px 20px rgba(0,0,0,.18)}
+    .cake .layer{position:absolute;left:50%;transform:translateX(-50%);border-radius:22px;overflow:hidden}
+    .cake .layer::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(0,0,0,.08))}
+    .cake .layer1{bottom:26px;width:190px;height:58px;background:linear-gradient(180deg,#ff7fb0 0%,#ff5d96 100%)}
+    .cake .layer2{bottom:78px;width:150px;height:54px;background:linear-gradient(180deg,#ffb8cf 0%,#ff8ab6 100%)}
+    .cake .layer3{bottom:126px;width:110px;height:46px;background:linear-gradient(180deg,#fff2f7 0%,#ffd1e1 100%)}
+    .cake .cream{position:absolute;left:50%;transform:translateX(-50%);border-radius:999px;opacity:.92;box-shadow:0 4px 8px rgba(0,0,0,.08)}
+    .cake .cream1{bottom:72px;width:162px;height:10px;background:rgba(255,255,255,.9)}
+    .cake .cream2{bottom:118px;width:122px;height:10px;background:rgba(255,255,255,.92)}
+    .cake .candle{position:absolute;left:50%;bottom:168px;transform:translateX(-50%);width:10px;height:44px;border-radius:7px;background:linear-gradient(180deg,#ffe7a4,#fff5d1);box-shadow:inset 0 -6px 0 rgba(255,160,120,.18)}
+    .cake .flame{position:absolute;left:50%;top:-18px;transform:translateX(-50%);width:16px;height:24px;border-radius:55% 55% 55% 55% / 70% 70% 35% 35%;background:radial-gradient(circle at 50% 35%, #fff8bc 0%, #ffd86d 30%, #ffb23d 60%, #ff6a00 100%);box-shadow:0 0 16px rgba(255,185,70,.9), 0 0 38px rgba(255,145,20,.35);animation:flicker .6s infinite alternate}
+    .cake.blown .flame{opacity:0;transform:translateX(-50%) scale(.2)}
+    .cake .smoke{position:absolute;left:50%;top:-24px;transform:translateX(-50%);width:20px;height:20px;border-radius:50%;background:radial-gradient(circle, rgba(255,255,255,.45), rgba(255,255,255,0) 72%);opacity:0;filter:blur(1px)}
+    .cake.blown .smoke{animation:smoke 1.5s ease-out forwards}
+    @keyframes smoke{0%{opacity:.7;transform:translateX(-50%) translateY(0) scale(.4)}100%{opacity:0;transform:translateX(-50%) translateY(-34px) scale(2.2)}}
+    @keyframes flicker{from{transform:translateX(-50%) scale(1) rotate(-2deg)}to{transform:translateX(-50%) scale(1.08) rotate(2deg)}}
+    .gallery-card{overflow:hidden;cursor:pointer;transition:transform .3s ease, box-shadow .3s ease}
+    .gallery-card:hover{transform:translateY(-4px);box-shadow:0 18px 44px rgba(0,0,0,.28)}
+    .gallery-card img{width:100%;aspect-ratio:1/1.08;object-fit:cover;object-position:center;border-radius:18px;display:block;background:rgba(255,255,255,.08);transition:transform .5s ease}
+    .gallery-card:hover img{transform:scale(1.03)}
+    .gallery-card p{margin-top:.75rem;font-size:.84rem;line-height:1.45;color:rgba(255,238,245,.92)}
+    .note{line-height:1.9;color:rgba(255,238,245,.92)}
+    #toast{visibility:hidden;min-width:250px;background:var(--pink);color:#fff;text-align:center;border-radius:50px;padding:14px 18px;position:fixed;z-index:1000;left:50%;bottom:26px;transform:translateX(-50%)}
+    #toast.show{visibility:visible;animation:fadeInOut 2.8s}
+    @keyframes fadeInOut{0%{opacity:0;bottom:0}20%{opacity:1;bottom:26px}80%{opacity:1;bottom:26px}100%{opacity:0;bottom:0}}
+    .photo-popup{position:fixed;inset:0;z-index:999;background:rgba(7,4,16,.84);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s ease;padding:18px}
+    .photo-popup.show{opacity:1;pointer-events:auto}
+    .popup-panel{position:relative;width:min(92vw,560px);max-height:88vh;display:flex;align-items:center;justify-content:center}
+    .popup-panel img{width:100%;max-height:78vh;object-fit:contain;border-radius:22px;background:#140b1f;box-shadow:0 25px 80px rgba(0,0,0,.46);transform:scale(.76) rotate(-4deg);transition:transform .34s cubic-bezier(.2,.9,.2,1)}
+    .photo-popup.show .popup-panel img{transform:scale(1) rotate(0deg)}
+    .close-btn{position:absolute;top:-14px;right:-14px;width:44px;height:44px;border-radius:999px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.15);color:#fff;font-size:22px;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 28px rgba(0,0,0,.36)}
+    .grid-bg{position:fixed;inset:0;pointer-events:none;opacity:.12;background-image:radial-gradient(circle, rgba(255,255,255,.9) 1px, transparent 1px);background-size:28px 28px;mask-image:radial-gradient(circle at center, rgba(0,0,0,.9), transparent 72%)}
   </style>
 </head>
 <body>
-
+  <div class="grid-bg"></div>
   <div id="balloons-container"></div>
-
-  <main class="relative z-10 container mx-auto px-4 py-10">
-    
-    <section class="text-center mb-16 floating">
-      <h1 class="text-6xl md:text-8xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-300">
-        Happy Birthday!
-      </h1>
-      <p class="text-xl md:text-2xl text-pink-200 opacity-90">To the person who fills my heart with joy.</p>
-      
-      <div class="flex justify-center gap-4 my-8">
-        <div class="glass-card p-4 min-w-[80px]">
-          <span id="days" class="text-3xl font-bold">00</span>
-          <p class="text-xs uppercase">Days</p>
-        </div>
-        <div class="glass-card p-4 min-w-[80px]">
-          <span id="hours" class="text-3xl font-bold">00</span>
-          <p class="text-xs uppercase">Hours</p>
-        </div>
-        <div class="glass-card p-4 min-w-[80px]">
-          <span id="minutes" class="text-3xl font-bold">00</span>
-          <p class="text-xs uppercase">Mins</p>
-        </div>
+  <main class="relative z-10 w-full max-w-6xl mx-auto px-4 py-8 md:py-10">
+    <section class="text-center mb-10 floating">
+      <h1 class="text-5xl md:text-7xl font-extrabold mb-4 glow">Happy Birthday My Love 🎂❤️</h1>
+      <p class="text-base md:text-2xl text-pink-100/90 max-w-3xl mx-auto">A premium birthday experience made for the one who turns every ordinary moment into something unforgettable.</p>
+      <div class="flex justify-center gap-3 md:gap-4 my-8 flex-wrap">
+        <div class="glass-card count"><span id="days" class="text-2xl md:text-3xl font-bold">00</span><p class="text-[10px] uppercase tracking-widest mt-1">Days</p></div>
+        <div class="glass-card count"><span id="hours" class="text-2xl md:text-3xl font-bold">00</span><p class="text-[10px] uppercase tracking-widest mt-1">Hours</p></div>
+        <div class="glass-card count"><span id="minutes" class="text-2xl md:text-3xl font-bold">00</span><p class="text-[10px] uppercase tracking-widest mt-1">Mins</p></div>
+        <div class="glass-card count"><span id="seconds" class="text-2xl md:text-3xl font-bold">00</span><p class="text-[10px] uppercase tracking-widest mt-1">Secs</p></div>
       </div>
-
-      <button onclick="playMainTheme()" class="btn btn-wide bg-pink-500 hover:bg-pink-600 border-none text-white rounded-full shadow-lg">
-        🎵 Play Our Song
-      </button>
-    </section>
-
-    <section class="glass-card p-10 max-w-2xl mx-auto text-center mb-20">
-      <h2 class="text-3xl font-bold mb-6">Make a Wish</h2>
-      <div class="cake-container">
-        <div class="cake"></div>
-        <div class="candle">
-          <div id="flame" class="flame"></div>
-        </div>
-      </div>
-      <div class="mt-10 space-x-4">
-        <button onclick="blowCandle()" class="btn btn-outline border-pink-400 text-pink-200 hover:bg-pink-500 hover:border-none">
-          ✨ Make Wish
-        </button>
+      <div class="flex gap-3 justify-center flex-wrap">
+        <button type="button" class="btn btn-wide btn-pink rounded-full shadow-lg" onclick="playMainTheme()">🎵 Play Our Song</button>
+        <button type="button" class="btn btn-wide rounded-full glass-card text-pink-100 border border-white/15" onclick="burstMode()">✨ Magic Burst</button>
       </div>
     </section>
 
-    <section class="mb-20">
-      <h2 class="text-4xl font-bold text-center mb-12">Our Favorite Memories</h2>
-      <div id="gallery" class="photo-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+    <section class="glass-card p-6 md:p-10 rounded-[28px] max-w-3xl mx-auto text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold mb-3">Make a Wish</h2>
+      <p class="text-pink-100/85 mb-2">Blow the candle, enjoy the confetti, and let the day feel magical.</p>
+      <p class="text-pink-200/90 text-sm md:text-base font-medium mb-4 animate-pulse">Tap on each image to open a surprise 🎁</p>
+      <div class="cake-wrap">
+        <div class="cake" id="cakeScene">
+          <div class="plate"></div>
+          <div class="layer layer2"></div>
+          <div class="layer layer1"></div>
+          <div class="layer layer3"></div>
+          <div class="cream cream1"></div>
+          <div class="cream cream2"></div>
+          <div class="candle"><div id="flame" class="flame"></div></div>
+          <div class="smoke" id="smoke"></div>
         </div>
+      </div>
+      <div class="mt-2 flex justify-center gap-3 flex-wrap">
+        <button type="button" class="btn btn-outline border-pink-300 text-pink-100 hover:bg-pink-500 hover:border-transparent rounded-full" onclick="blowCandle()">✨ Make Wish</button>
+      </div>
     </section>
 
+    <section class="glass-card p-6 md:p-10 rounded-[28px] max-w-4xl mx-auto mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-6">A Love Note For You</h2>
+      <p class="note text-center max-w-3xl mx-auto text-sm md:text-lg">My love, you make my world feel softer, warmer, and so much more special. Your smile is my favorite sunrise, your voice is my favorite melody, and your presence turns ordinary days into the most beautiful memories. On your birthday, I just want you to feel how deeply you are loved, how precious you are, and how lucky I am to have you in my life. May your year be full of laughter, sweet surprises, endless happiness, and every dream your heart is holding. You are not just my favorite person -- you are my heart, my calm, my joy, and my forever wish.</p>
+    </section>
+
+    <section class="mb-14">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-10">Our Favorite Memories</h2>
+      <div id="gallery" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-8"></div>
+    </section>
   </main>
 
   <div id="toast">Message sent with love! ❤️</div>
-
-  <audio id="audio-player"></audio>
+  <div id="photoPopup" class="photo-popup" onclick="closePhotoPopup(event)">
+    <div class="popup-panel">
+      <button class="close-btn" onclick="closePhotoPopup(event)">✕</button>
+      <img id="popupImg" alt="preview">
+    </div>
+  </div>
+  <audio id="audio-player" preload="auto"></audio>
 
   <script>
-    // --- Config & Data ---
+    const audioPlayer = document.getElementById('audio-player');
+    const gallery = document.getElementById('gallery');
+    const balloonContainer = document.getElementById('balloons-container');
     const photoData = [
       { id: 1, song: 'perfect.mp3', msg: 'You are absolutely perfect to me.' },
-      { id: 2, song: 'lover.mp3', msg: 'Can I go where you go?' },
-      { id: 3, song: 'you-are-in-love.mp3', msg: 'I can hear it in the silence.' },
-      { id: 4, song: 'enchanted.mp3', msg: 'It was enchanting to meet you.' },
-      { id: 5, song: 'begin-again.mp3', msg: 'On a Wednesday in a cafe...' },
-      { id: 6, song: 'love-story.mp3', msg: 'It\'s a love story, baby just say yes.' },
-      { id: 7, song: 'paper-rings.mp3', msg: 'I like shiny things, but I\'d marry you with paper rings.' },
-      { id: 8, song: 'call-it-what-you-want.mp3', msg: 'You brought a knife to a gunfight.' }
+      { id: 2, song: 'lover.mp3', msg: 'You are the love that feels like home.' },
+      { id: 3, song: 'you-are-in-love.mp3', msg: 'Every heartbeat says your name.' },
+      { id: 4, song: 'enchanted.mp3', msg: 'Meeting you felt like magic.' },
+      { id: 5, song: 'begin-again.mp3', msg: 'Loving you is the best fresh start.' },
+      { id: 6, song: 'love-story.mp3', msg: 'Our story is my favorite one.' },
+      { id: 7, song: 'paper-rings.mp3', msg: 'I would choose you again and again.' },
+      { id: 8, song: 'call-it-what-you-want.mp3', msg: 'Whatever we are, it is beautiful.' }
+    ];
+    const fallbackImages = [
+      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80'
     ];
 
-    const audioPlayer = document.getElementById('audio-player');
-    const fallbackImage = "https://images.unsplash.com/photo-1513272795195-985ad360e27e?auto=format&fit=crop&w=800&q=80";
+    function showToast(text){ const t=document.getElementById('toast'); t.innerText=text; t.className='show'; setTimeout(()=>t.className=t.className.replace('show',''), 2500); }
+    function triggerConfetti(){ confetti({ particleCount: 160, spread: 72, origin: { y: 0.62 }, colors: ['#ff4d8d','#ffd1e7','#ffffff','#ffd76a','#c084fc'] }); }
+    function createHearts(){ for(let i=0;i<12;i++){ setTimeout(()=>{ const h=document.createElement('div'); h.className='heart'; h.textContent=Math.random()>0.5?'💖':'💗'; h.style.left=Math.random()*100+'vw'; h.style.fontSize=(14+Math.random()*16)+'px'; h.style.animationDuration=(4+Math.random()*4)+'s'; document.body.appendChild(h); setTimeout(()=>h.remove(),7000); }, i*90); } }
+    function playAudio(filename){ audioPlayer.pause(); audioPlayer.currentTime=0; audioPlayer.src=filename; audioPlayer.load(); audioPlayer.play().catch(()=>showToast('Audio not found: ' + filename)); }
+    function playMainTheme(){ playAudio('wanna-be-yours.mp3'); showToast('Now Playing: Wanna Be Yours 🎵'); triggerConfetti(); createHearts(); }
+    function burstMode(){ triggerConfetti(); createHearts(); showToast('Magic Burst ✨'); }
+    function blowCandle(){ document.getElementById('cakeScene').classList.add('blown'); showToast('Happy Birthday My Love! 🎂❤️'); triggerConfetti(); createHearts(); }
+    function lightbox(src){ document.getElementById('popupImg').src = src; document.getElementById('photoPopup').classList.add('show'); }
+    function closePhotoPopup(e){ if(e && e.target && e.target.id!=='photoPopup' && !e.target.classList.contains('close-btn')) return; document.getElementById('photoPopup').classList.remove('show'); }
 
-    // --- Audio Logic ---
-    function playAudio(filename) {
-      audioPlayer.src = filename;
-      audioPlayer.play().catch(e => {
-        showToast("Audio file missing: " + filename);
-        console.error("Audio block:", e);
-      });
-    }
-
-    function playMainTheme() {
-      playAudio('wanna-be-yours.mp3');
-      showToast("Now Playing: Wanna Be Yours 🎵");
-      triggerConfetti();
-    }
-
-    function blowCandle() {
-      const flame = document.getElementById('flame');
-      flame.style.display = 'none';
-      playAudio('happy-birthday.mp3');
-      showToast("Happy Birthday! All your wishes come true! 🎂");
-      triggerConfetti();
-    }
-
-    // --- Gallery Logic ---
-    const gallery = document.getElementById('gallery');
-    photoData.forEach(item => {
-      const div = document.createElement('div');
-      div.className = 'text-center';
-      div.innerHTML = `
-        <div class="glass-card p-2">
-          <img src="photo${item.id}.jpg" 
-               onerror="this.src='${fallbackImage}'" 
-               onclick="handlePhotoClick('${item.song}', '${item.msg}')" 
-               alt="Memory ${item.id}">
-          <p class="mt-4 text-sm italic text-pink-200">${item.msg}</p>
-        </div>
-      `;
-      gallery.appendChild(div);
+    photoData.forEach((item, i) => {
+      const src = `photo${item.id}.jpg`;
+      const tile = document.createElement('div');
+      tile.className = 'gallery-card glass-card p-3';
+      tile.innerHTML = `<img class="photo" alt="Memory ${i+1}"><p>${item.msg}</p>`;
+      const img = tile.querySelector('img');
+      img.src = src;
+      img.onerror = () => { img.src = fallbackImages[i % fallbackImages.length]; };
+      img.onclick = () => { showToast('Click on images for surprise ❤️'); lightbox(img.src); playAudio(item.song); triggerConfetti(); createHearts(); };
+      gallery.appendChild(tile);
     });
 
-    function handlePhotoClick(song, msg) {
-      playAudio(song);
-      showToast(msg);
-      createHearts();
-    }
-
-    // --- Visual Effects ---
-    function showToast(text) {
-      const t = document.getElementById("toast");
-      t.innerText = text;
-      t.className = "show";
-      setTimeout(() => { t.className = t.className.replace("show", ""); }, 3000);
-    }
-
-    function triggerConfetti() {
-      confetti({
-        particleCount: 150,
-        spread: 70,
-        origin: { y: 0.6 },
-        colors: ['#ff4d8d', '#ffffff', '#ffd700']
-      });
-    }
-
-    function createHearts() {
-      for (let i = 0; i < 15; i++) {
-        setTimeout(() => {
-          const heart = document.createElement('div');
-          heart.innerHTML = '❤️';
-          heart.className = 'heart';
-          heart.style.left = Math.random() * 100 + 'vw';
-          heart.style.top = '-5vh';
-          document.body.appendChild(heart);
-          setTimeout(() => heart.remove(), 5000);
-        }, i * 100);
+    function spawnBalloons(){
+      for(let i=0;i<10;i++){
+        const b=document.createElement('div');
+        b.className='balloon';
+        b.style.left=Math.random()*100+'vw';
+        b.style.animationDelay=(Math.random()*5)+'s';
+        b.style.backgroundColor=`hsl(${Math.random()*360}, 70%, 70%)`;
+        balloonContainer.appendChild(b);
       }
     }
 
-    function spawnBalloons() {
-      const container = document.getElementById('balloons-container');
-      for (let i = 0; i < 10; i++) {
-        const b = document.createElement('div');
-        b.className = 'balloon';
-        b.style.left = Math.random() * 100 + 'vw';
-        b.style.animationDelay = Math.random() * 5 + 's';
-        b.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 70%)`;
-        container.appendChild(b);
-      }
-    }
-
-    // --- Countdown Timer ---
-    function updateCountdown() {
+    function updateCountdown(){
       const now = new Date();
-      // Set to the end of today or a specific date
       const target = new Date();
-      target.setHours(23, 59, 59);
-      
+      target.setHours(23, 59, 59, 999);
       const diff = target - now;
-      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const m = Math.floor((diff / 1000 / 60) % 60);
-
-      document.getElementById('days').innerText = d < 10 ? '0' + d : d;
-      document.getElementById('hours').innerText = h < 10 ? '0' + h : h;
-      document.getElementById('minutes').innerText = m < 10 ? '0' + m : m;
+      const d = Math.max(0, Math.floor(diff / 86400000));
+      const h = Math.max(0, Math.floor((diff / 3600000) % 24));
+      const m = Math.max(0, Math.floor((diff / 60000) % 60));
+      const s = Math.max(0, Math.floor((diff / 1000) % 60));
+      document.getElementById('days').innerText = String(d).padStart(2, '0');
+      document.getElementById('hours').innerText = String(h).padStart(2, '0');
+      document.getElementById('minutes').innerText = String(m).padStart(2, '0');
+      document.getElementById('seconds').innerText = String(s).padStart(2, '0');
     }
 
-    // Initialize
     setInterval(updateCountdown, 1000);
+    updateCountdown();
     spawnBalloons();
+    setInterval(()=>{ const heart=document.createElement('div'); heart.className='heart'; heart.innerText=Math.random()>0.5?'💗':'💖'; heart.style.left=Math.random()*100+'vw'; heart.style.fontSize=(14+Math.random()*16)+'px'; heart.style.animationDuration=(4+Math.random()*4)+'s'; document.body.appendChild(heart); setTimeout(()=>heart.remove(),7000); }, 1100);
   </script>
 </body>
 </html>
