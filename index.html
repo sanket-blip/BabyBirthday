@@ -4,290 +4,340 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Happy Birthday My Love 🎂❤️</title>
-  <meta name="theme-color" content="#ff4d8d" />
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.4/dist/full.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
   <style>
-    :root{--pink:#ff4d8d;--pink2:#ff79a7;--bg1:#12091f;--bg2:#1d1230;--bg3:#31153f}
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;font-family:'Poppins',sans-serif;color:#fff;overflow-x:hidden;
-      background:
-        radial-gradient(circle at 12% 16%, rgba(255,77,141,.24), transparent 22%),
-        radial-gradient(circle at 86% 18%, rgba(255,209,102,.16), transparent 18%),
-        radial-gradient(circle at 50% 80%, rgba(200,120,255,.16), transparent 24%),
-        linear-gradient(135deg,var(--bg1),var(--bg2) 50%,var(--bg3));
+    :root {
+      --pink: #ff4d8d;
+      --purple: #1d1230;
+      --glass: rgba(255, 255, 255, 0.1);
     }
-    .glass{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 20px 60px rgba(0,0,0,.3)}
-    .glow{text-shadow:0 0 15px rgba(255,77,141,.5),0 0 26px rgba(255,118,168,.22)}
-    .slide-in{animation:slideIn .6s ease both}
-    @keyframes slideIn{from{opacity:0;transform:translateY(20px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
-    .pop{animation:pop .45s ease both}
-    @keyframes pop{0%{transform:scale(.7);opacity:0}100%{transform:scale(1);opacity:1}}
-    .hero-float{animation:floaty 6s ease-in-out infinite}
-    @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
-    .bg-orb{position:absolute;border-radius:999px;filter:blur(34px);opacity:.22;animation:drift 14s ease-in-out infinite}
-    @keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(18px,-20px)}}
-    .photo{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:1.4rem;cursor:pointer;transition:.35s ease;border:1px solid rgba(255,255,255,.16)}
-    .photo:hover{transform:scale(1.03) rotate(-.4deg)}
-    .placeholder{background:linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.03));display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.65);font-size:.95rem;min-height:180px;text-align:center;padding:16px}
-    .heart{position:fixed;top:-20px;pointer-events:none;z-index:1;opacity:.85;animation:fall linear forwards}
-    @keyframes fall{to{transform:translateY(110vh) rotate(360deg);opacity:0}}
-    .balloon{position:absolute;width:70px;height:90px;border-radius:50%;background:linear-gradient(180deg,#ff7aa7,#ff4d8d);box-shadow:inset -10px -18px 0 rgba(0,0,0,.08);animation:rise 12s linear infinite;opacity:.85}
-    .balloon::after{content:"";position:absolute;left:50%;top:86px;width:2px;height:60px;background:rgba(255,255,255,.5)}
-    @keyframes rise{0%{transform:translateY(110vh) translateX(0) rotate(0deg)}50%{transform:translateY(40vh) translateX(14px) rotate(3deg)}100%{transform:translateY(-20vh) translateX(-10px) rotate(-4deg)}}
-    .btn-pink{background:linear-gradient(135deg,var(--pink),var(--pink2));color:#fff;border:none}
-    .btn-pink:hover{filter:brightness(1.05)}
-    .typing::after{content:'|';animation:blink 1s infinite}
-    @keyframes blink{50%{opacity:0}}
-    .count{min-width:88px;padding:12px 14px;border-radius:18px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12)}
-    .pulse{animation:pulseGlow 2.2s ease-in-out infinite}
-    @keyframes pulseGlow{0%,100%{box-shadow:0 0 0 0 rgba(255,77,141,.35)}50%{box-shadow:0 0 0 18px rgba(255,77,141,0)}}
-    .cake{width:220px;height:220px;margin:auto;position:relative;filter:drop-shadow(0 14px 20px rgba(0,0,0,.25))}
-    .cake .plate{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:220px;height:22px;border-radius:999px;background:linear-gradient(180deg,#fff,#e9d7ff)}
-    .cake .layer{position:absolute;left:50%;transform:translateX(-50%);border-radius:20px;background:linear-gradient(180deg,#ffb3c7,#ff4d8d)}
-    .cake .layer.one{bottom:20px;width:180px;height:56px}
-    .cake .layer.two{bottom:76px;width:140px;height:46px;background:linear-gradient(180deg,#ffd6e0,#ff7aa7)}
-    .cake .icing{position:absolute;left:50%;bottom:114px;transform:translateX(-50%);width:150px;height:20px;border-radius:999px;background:#fff}
-    .cake .candle{position:absolute;left:50%;bottom:134px;transform:translateX(-50%);width:12px;height:44px;background:#ffd166;border-radius:999px}
-    .cake .flame{position:absolute;left:50%;bottom:176px;transform:translateX(-50%) rotate(45deg);width:20px;height:20px;background:radial-gradient(circle,#fff8a8 20%, #ffd166 60%, rgba(255,209,102,.2) 100%);border-radius:50% 50% 50% 0;animation:flicker .9s infinite alternate;opacity:1;transition:opacity .2s ease, transform .2s ease}
-    .cake-cut .layer.one{clip-path:polygon(0 0, 100% 0, 100% 100%, 0 100%, 22% 100%, 27% 0)}
-    .cake-cut .layer.two{clip-path:polygon(0 0, 100% 0, 100% 100%, 0 100%, 46% 100%, 51% 0)}
-    .knife{position:absolute;right:-80px;top:78px;font-size:72px;transform:rotate(-20deg) translateX(0);opacity:0;transition:.5s ease;filter:drop-shadow(0 10px 10px rgba(0,0,0,.35))}
-    .knife.show{opacity:1;transform:rotate(10deg) translateX(-65px)}
-    @keyframes flicker{from{transform:translateX(-50%) rotate(35deg) scale(.92)}to{transform:translateX(-50%) rotate(52deg) scale(1.08)}}
-    .smoke{position:absolute;left:50%;bottom:175px;width:16px;height:16px;border-radius:50%;background:rgba(255,255,255,.8);transform:translateX(-50%);filter:blur(4px);opacity:0;pointer-events:none}
-    .smoke.puff{animation:smokeUp .9s ease-out forwards}
-    @keyframes smokeUp{0%{opacity:.9;transform:translateX(-50%) translateY(0) scale(.6)}100%{opacity:0;transform:translateX(-50%) translateY(-70px) scale(2.2)}}
-    .toastish{margin-top:10px;padding:10px 14px;border-radius:16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);font-size:.92rem;color:#fff}
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      color: white;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* Glassmorphism */
+    .glass-card {
+      background: var(--glass);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 24px;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    }
+
+    /* Floating Animations */
+    .floating {
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .heart {
+      position: fixed;
+      font-size: 20px;
+      color: #ff4d8d;
+      pointer-events: none;
+      z-index: 0;
+      animation: heartFall 5s linear forwards;
+    }
+    @keyframes heartFall {
+      to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+
+    .balloon {
+      position: absolute;
+      width: 40px;
+      height: 50px;
+      background: var(--pink);
+      border-radius: 50%;
+      animation: rise 10s infinite ease-in;
+      opacity: 0.7;
+    }
+    @keyframes rise {
+      from { transform: translateY(100vh); }
+      to { transform: translateY(-20vh); }
+    }
+
+    /* Cake Styling */
+    .cake-container {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      margin: auto;
+    }
+    .cake {
+      position: absolute;
+      bottom: 0;
+      width: 160px;
+      height: 100px;
+      background: #f48fb1;
+      border-radius: 10px 10px 0 0;
+      left: 20px;
+      box-shadow: inset 0 -10px rgba(0,0,0,0.1);
+    }
+    .candle {
+      position: absolute;
+      bottom: 100px;
+      left: 95px;
+      width: 10px;
+      height: 40px;
+      background: #fff;
+      border-radius: 4px;
+    }
+    .flame {
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 15px;
+      height: 20px;
+      background: orange;
+      border-radius: 50% 50% 20% 20%;
+      box-shadow: 0 0 15px orange;
+      animation: flicker 0.5s infinite alternate;
+    }
+    @keyframes flicker {
+      from { opacity: 0.8; transform: translateX(-50%) scale(1); }
+      to { opacity: 1; transform: translateX(-50%) scale(1.1); }
+    }
+
+    /* Photo Gallery */
+    .photo-grid img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 15px;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .photo-grid img:hover {
+      transform: scale(1.05);
+      border: 3px solid var(--pink);
+    }
+
+    /* Custom Toast */
+    #toast {
+      visibility: hidden;
+      min-width: 250px;
+      background-color: var(--pink);
+      color: #fff;
+      text-align: center;
+      border-radius: 50px;
+      padding: 16px;
+      position: fixed;
+      z-index: 100;
+      left: 50%;
+      bottom: 30px;
+      transform: translateX(-50%);
+    }
+    #toast.show {
+      visibility: visible;
+      animation: fadeInOut 3s;
+    }
+    @keyframes fadeInOut {
+      0% { opacity: 0; bottom: 0; }
+      20% { opacity: 1; bottom: 30px; }
+      80% { opacity: 1; bottom: 30px; }
+      100% { opacity: 0; bottom: 0; }
+    }
   </style>
 </head>
 <body>
-  <div class="fixed inset-0 overflow-hidden pointer-events-none">
-    <div class="bg-orb w-72 h-72 bg-pink-500 top-10 left-6"></div>
-    <div class="bg-orb w-80 h-80 bg-fuchsia-500 top-1/2 right-10"></div>
-    <div class="bg-orb w-56 h-56 bg-rose-400 bottom-10 left-1/3"></div>
-    <div class="balloon" style="left:6%;animation-delay:0s"></div>
-    <div class="balloon" style="left:15%;background:linear-gradient(180deg,#ffd166,#ff9f1c);animation-delay:2s"></div>
-    <div class="balloon" style="left:82%;background:linear-gradient(180deg,#c084fc,#8b5cf6);animation-delay:1s"></div>
-    <div class="balloon" style="left:90%;background:linear-gradient(180deg,#8ef0d0,#34d399);animation-delay:3s"></div>
-  </div>
 
-  <main class="relative z-10">
-    <section class="min-h-screen px-4 py-10 flex items-center">
-      <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-center w-full">
-        <div class="space-y-6 slide-in">
-          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass"><span>🎂</span><span class="text-sm font-medium">Birthday mode: ON</span></div>
-          <h1 class="text-5xl md:text-7xl font-black leading-tight glow">Happy Birthday<br><span id="nameText" class="text-pink-300">My Love</span> ❤️</h1>
-          <p id="typing" class="typing text-lg md:text-2xl text-white/85 max-w-2xl min-h-16"></p>
-          <div class="grid grid-cols-4 gap-3 max-w-xl">
-            <div class="count text-center pop"><div id="days" class="text-2xl font-bold">0</div><div class="text-xs text-white/70">Days</div></div>
-            <div class="count text-center pop"><div id="hours" class="text-2xl font-bold">0</div><div class="text-xs text-white/70">Hours</div></div>
-            <div class="count text-center pop"><div id="minutes" class="text-2xl font-bold">0</div><div class="text-xs text-white/70">Minutes</div></div>
-            <div class="count text-center pop"><div id="seconds" class="text-2xl font-bold">0</div><div class="text-xs text-white/70">Seconds</div></div>
-          </div>
-          <div class="flex flex-wrap gap-3">
-            <button type="button" class="btn btn-pink rounded-full px-6 pulse" onclick="openSurprise()">Open Surprise</button>
-            <button type="button" class="btn btn-outline border-white/25 text-white rounded-full px-6" onclick="revealAllOneByOne()">See Memory</button>
-            <button type="button" class="btn btn-outline border-white/25 text-white rounded-full px-6" onclick="playSong()">Play Song</button>
-            <button type="button" class="btn btn-outline border-white/25 text-white rounded-full px-6" onclick="launchConfetti()">Celebrate</button>
-          </div>
-        </div>
+  <div id="balloons-container"></div>
 
-        <div class="relative">
-          <div class="glass rounded-[2rem] p-4 md:p-6 hero-float">
-            <div class="cake" id="cakeScene">
-              <div class="plate"></div><div class="layer two"></div><div class="layer one"></div><div class="icing"></div><div class="candle"></div><div class="flame" id="flame"></div><div class="smoke" id="smoke"></div><div class="knife" id="knife">🔪</div>
-            </div>
-            <div class="mt-6 flex gap-3 justify-center flex-wrap">
-              <button type="button" class="btn btn-pink rounded-full px-5" onclick="makeWish()">Make Wish</button>
-              <button type="button" class="btn btn-outline border-white/25 text-white rounded-full px-5" onclick="cutCake()">Cut Cake</button>
-            </div>
-            <img id="heroPhoto" src="photo1.jpg" alt="Birthday hero" class="photo mt-6" onclick="lightbox(this.src)" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80'" />
-            <div class="mt-4 grid grid-cols-3 gap-3" id="quickPhotos"></div>
-          </div>
+  <main class="relative z-10 container mx-auto px-4 py-10">
+    
+    <section class="text-center mb-16 floating">
+      <h1 class="text-6xl md:text-8xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-300">
+        Happy Birthday!
+      </h1>
+      <p class="text-xl md:text-2xl text-pink-200 opacity-90">To the person who fills my heart with joy.</p>
+      
+      <div class="flex justify-center gap-4 my-8">
+        <div class="glass-card p-4 min-w-[80px]">
+          <span id="days" class="text-3xl font-bold">00</span>
+          <p class="text-xs uppercase">Days</p>
         </div>
+        <div class="glass-card p-4 min-w-[80px]">
+          <span id="hours" class="text-3xl font-bold">00</span>
+          <p class="text-xs uppercase">Hours</p>
+        </div>
+        <div class="glass-card p-4 min-w-[80px]">
+          <span id="minutes" class="text-3xl font-bold">00</span>
+          <p class="text-xs uppercase">Mins</p>
+        </div>
+      </div>
+
+      <button onclick="playMainTheme()" class="btn btn-wide bg-pink-500 hover:bg-pink-600 border-none text-white rounded-full shadow-lg">
+        🎵 Play Our Song
+      </button>
+    </section>
+
+    <section class="glass-card p-10 max-w-2xl mx-auto text-center mb-20">
+      <h2 class="text-3xl font-bold mb-6">Make a Wish</h2>
+      <div class="cake-container">
+        <div class="cake"></div>
+        <div class="candle">
+          <div id="flame" class="flame"></div>
+        </div>
+      </div>
+      <div class="mt-10 space-x-4">
+        <button onclick="blowCandle()" class="btn btn-outline border-pink-400 text-pink-200 hover:bg-pink-500 hover:border-none">
+          ✨ Make Wish
+        </button>
       </div>
     </section>
 
-    <section id="memories" class="px-4 pb-20">
-      <div class="max-w-7xl mx-auto">
-        <h2 class="text-3xl md:text-5xl font-bold glow mb-4">Birthday Memories</h2>
-        <p class="text-white/75 mb-8 max-w-2xl">Click any photo to reveal its message and play its song.</p>
-        <div id="gallery" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
-      </div>
+    <section class="mb-20">
+      <h2 class="text-4xl font-bold text-center mb-12">Our Favorite Memories</h2>
+      <div id="gallery" class="photo-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        </div>
     </section>
+
   </main>
 
-  <dialog id="surpriseBox" class="modal">
-    <div class="modal-box glass text-white max-w-xl text-center">
-      <h3 class="font-bold text-3xl glow">Make a Wish 🎂</h3>
-      <div class="cake mt-4" id="surpriseCake">
-        <div class="plate"></div><div class="layer two"></div><div class="layer one"></div><div class="icing"></div><div class="candle"></div><div class="flame" id="surpriseFlame"></div><div class="smoke" id="surpriseSmoke"></div><div class="knife" id="surpriseKnife">🔪</div>
-      </div>
-      <p class="my-4 text-white/90 leading-8">First blow the candle, then cut the cake.</p>
-      <div class="flex justify-center gap-3 flex-wrap">
-        <button type="button" class="btn btn-pink rounded-full" onclick="blowCandle()">Make Wish</button>
-        <button type="button" class="btn btn-outline border-white/25 text-white rounded-full" onclick="cutSurpriseCake()">Cut Cake</button>
-        <button type="button" class="btn btn-outline border-white/25 text-white rounded-full" onclick="launchConfetti()">More Confetti</button>
-        <form method="dialog"><button class="btn btn-outline border-white/25 text-white rounded-full">Close</button></form>
-      </div>
-    </div>
-  </dialog>
-  <dialog id="toastBox" class="modal">
-    <div class="modal-box glass text-white max-w-sm text-center">
-      <p id="toastText" class="text-lg font-semibold"></p>
-      <div class="modal-action justify-center"><form method="dialog"><button class="btn btn-pink rounded-full">OK</button></form></div>
-    </div>
-  </dialog>
+  <div id="toast">Message sent with love! ❤️</div>
 
-  <audio id="bgMusic" loop preload="auto"><source src="wanna-be-yours.mp3" type="audio/mpeg"></audio>
+  <audio id="audio-player"></audio>
 
   <script>
-    const typingEl = document.getElementById('typing');
-    const typingText = 'Today is all about cake, balloons, memories, and the most beautiful girl in my world.';
-    let ti = 0;
-    (function typeWriter(){ if(ti <= typingText.length){ typingEl.textContent = typingText.slice(0, ti); ti++; setTimeout(typeWriter, 35); } })();
+    // --- Config & Data ---
+    const photoData = [
+      { id: 1, song: 'perfect.mp3', msg: 'You are absolutely perfect to me.' },
+      { id: 2, song: 'lover.mp3', msg: 'Can I go where you go?' },
+      { id: 3, song: 'you-are-in-love.mp3', msg: 'I can hear it in the silence.' },
+      { id: 4, song: 'enchanted.mp3', msg: 'It was enchanting to meet you.' },
+      { id: 5, song: 'begin-again.mp3', msg: 'On a Wednesday in a cafe...' },
+      { id: 6, song: 'love-story.mp3', msg: 'It\'s a love story, baby just say yes.' },
+      { id: 7, song: 'paper-rings.mp3', msg: 'I like shiny things, but I\'d marry you with paper rings.' },
+      { id: 8, song: 'call-it-what-you-want.mp3', msg: 'You brought a knife to a gunfight.' }
+    ];
 
-    const target = new Date(); target.setHours(24,0,0,0);
-    function updateCountdown(){ const diff = target - new Date(); document.getElementById('days').textContent = Math.max(0, Math.floor(diff / 86400000)); document.getElementById('hours').textContent = Math.max(0, Math.floor((diff / 3600000) % 24)); document.getElementById('minutes').textContent = Math.max(0, Math.floor((diff / 60000) % 60)); document.getElementById('seconds').textContent = Math.max(0, Math.floor((diff / 1000) % 60)); }
-    updateCountdown(); setInterval(updateCountdown, 1000);
+    const audioPlayer = document.getElementById('audio-player');
+    const fallbackImage = "https://images.unsplash.com/photo-1513272795195-985ad360e27e?auto=format&fit=crop&w=800&q=80";
 
-    function makeHeart(){ const heart = document.createElement('div'); heart.className='heart'; heart.textContent = Math.random() > 0.5 ? '💖' : '💗'; heart.style.left = Math.random()*100 + 'vw'; heart.style.fontSize = (14 + Math.random()*20) + 'px'; heart.style.animationDuration = (4 + Math.random()*4) + 's'; document.body.appendChild(heart); setTimeout(()=>heart.remove(), 8500); }
-    setInterval(makeHeart, 280);
-
-    function launchConfetti(){ confetti({ particleCount: 180, spread: 95, origin: { y: 0.65 }, colors: ['#ff4d8d', '#ff7aa7', '#ffffff', '#ffd166', '#c084fc'] }); setTimeout(()=>confetti({ particleCount: 90, spread: 120, origin: { y: 0.55 }, scalar: 0.9, colors: ['#ff4d8d', '#ffd166', '#ffffff'] }), 220); }
-    function lightbox(src){}
-    function showToast(text){ document.getElementById('toastText').textContent = text; document.getElementById('toastBox').showModal(); }
-    function openSurprise(){ const dlg = document.getElementById('surpriseBox'); if(dlg && !dlg.open) dlg.showModal(); launchConfetti(); }
-
-    let musicPlaying = false;
-    function playSong(){
-      const audio = document.getElementById('bgMusic');
-      if(!musicPlaying){
-        audio.currentTime = 0;
-        audio.play().then(()=>{ musicPlaying = true; showToast('Playing music 🎶'); }).catch(()=>{ showToast('Add wanna-be-yours.mp3 in the same folder'); });
-      } else {
-        audio.pause();
-        musicPlaying = false;
-        showToast('Music paused');
-      }
-    }
-
-    function puffSmoke(id){ const s = document.getElementById(id); if(!s) return; s.classList.remove('puff'); void s.offsetWidth; s.classList.add('puff'); }
-    function stopCurrentAudio(){ if(window.currentAudio){ window.currentAudio.pause(); window.currentAudio.currentTime = 0; } }
-    function playBirthday(){ if(window.birthdayAudio){ window.birthdayAudio.pause(); window.birthdayAudio.currentTime = 0; } window.birthdayAudio = new Audio('happy-birthday.mp3'); window.birthdayAudio.play().catch(()=>{}); }
-
-    function blowCandle(){
-      ['flame','surpriseFlame'].forEach(id => {
-        const el = document.getElementById(id);
-        if(el){ el.style.opacity='0'; el.style.display='none'; el.style.transform='translateX(-50%) scale(0)'; }
+    // --- Audio Logic ---
+    function playAudio(filename) {
+      audioPlayer.src = filename;
+      audioPlayer.play().catch(e => {
+        showToast("Audio file missing: " + filename);
+        console.error("Audio block:", e);
       });
-      puffSmoke('smoke');
-      puffSmoke('surpriseSmoke');
-      showToast('Happy Birthday 🎂');
-      launchConfetti();
-      stopCurrentAudio();
-      playBirthday();
     }
 
-    function cutCake(){ document.getElementById('cakeScene').classList.add('cake-cut'); document.getElementById('knife').classList.add('show'); showToast('Cake cut 🍰'); launchConfetti(); }
-    function cutSurpriseCake(){ document.getElementById('surpriseCake').classList.add('cake-cut'); document.getElementById('surpriseKnife').classList.add('show'); showToast('Cake cut 🍰'); launchConfetti(); }
-    function makeWish(){ openSurprise(); setTimeout(blowCandle, 350); setTimeout(cutSurpriseCake, 1000); }
+    function playMainTheme() {
+      playAudio('wanna-be-yours.mp3');
+      showToast("Now Playing: Wanna Be Yours 🎵");
+      triggerConfetti();
+    }
 
-    const captions = ['Sweet smile','Birthday queen','Cute memory','Forever special','Best moment','Lovely day','My favorite','Pure happiness'];
-    const songs = ['perfect.mp3','lover.mp3','you-are-in-love.mp3','enchanted.mp3','begin-again.mp3','love-story.mp3','paper-rings.mp3','call-it-what-you-want.mp3'];
-    const messages = [
-      'You are my perfect story.',
-      'Your smile feels like home.',
-      'Every moment with you is magical.',
-      'You make the world softer and brighter.',
-      'You are my favorite chapter.',
-      'I love the way you make life beautiful.',
-      'My heart is happiest with you.',
-      'You are my calm, my joy, my love.'
-    ];
-    const fallbackPhotos = [
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=900&q=80'
-    ];
-    const filePhotos = ['photo1.jpg','photo2.jpg','photo3.jpg','photo4.jpg','photo5.jpg','photo6.jpg','photo7.jpg','photo8.jpg'];
+    function blowCandle() {
+      const flame = document.getElementById('flame');
+      flame.style.display = 'none';
+      playAudio('happy-birthday.mp3');
+      showToast("Happy Birthday! All your wishes come true! 🎂");
+      triggerConfetti();
+    }
+
+    // --- Gallery Logic ---
     const gallery = document.getElementById('gallery');
-    const quick = document.getElementById('quickPhotos');
-    const resolved = [];
-    window.currentAudio = null;
-    window.birthdayAudio = null;
-
-    function fallbackUrl(i){ return fallbackPhotos[i % fallbackPhotos.length]; }
-    function setFallback(img, i){ img.onerror = null; img.src = fallbackUrl(i); }
-    function stopCurrentAudio(){ if(window.currentAudio){ window.currentAudio.pause(); window.currentAudio.currentTime = 0; } }
-    function playTrack(file){ stopCurrentAudio(); const a = new Audio(file); a.loop = true; a.play().catch(()=>{}); window.currentAudio = a; }
-
-    function revealTile(tile, i){
-      if(tile.querySelector('img')) return;
-      const src = resolved[i] || fallbackUrl(i);
-      const img = document.createElement('img');
-      img.src = src;
-      img.alt = captions[i % captions.length];
-      img.className = 'photo';
-      img.onerror = () => setFallback(img, i);
-      img.onclick = () => {
-        showToast(messages[i % messages.length]);
-        playTrack(songs[i % songs.length]);
-      };
-      tile.innerHTML = '';
-      tile.appendChild(img);
-      const cap = document.createElement('div');
-      cap.className = 'text-xs text-center text-white/75 mt-2';
-      cap.textContent = captions[i % captions.length];
-      tile.appendChild(cap);
-      const msg = document.createElement('div');
-      msg.className = 'toastish';
-      msg.textContent = messages[i % messages.length];
-      tile.appendChild(msg);
-      launchConfetti();
-    }
-
-    filePhotos.forEach((src, i) => {
-      const tester = new Image();
-      tester.onload = () => resolved[i] = src;
-      tester.onerror = () => resolved[i] = fallbackUrl(i);
-      tester.src = src;
-
-      const tile = document.createElement('div');
-      tile.className = 'memory-tile';
-      tile.innerHTML = `<div class="photo placeholder">${captions[i % captions.length]}</div>`;
-      tile.addEventListener('click', () => {
-        revealTile(tile, i);
-        setTimeout(() => { const img = tile.querySelector('img'); if(img) img.click(); }, 50);
-      });
-      gallery.appendChild(tile);
-
-      if(i < 3){
-        const b = document.createElement('button');
-        b.type = 'button';
-        b.className = 'glass rounded-2xl p-4 text-center hover:bg-white/15 transition';
-        b.innerHTML = '<div class="text-2xl">🎉</div><div class="text-sm mt-1">' + captions[i] + '</div>';
-        b.onclick = () => {
-          revealTile(tile, i);
-          setTimeout(() => { const img = tile.querySelector('img'); if(img) img.click(); }, 50);
-        };
-        quick.appendChild(b);
-      }
+    photoData.forEach(item => {
+      const div = document.createElement('div');
+      div.className = 'text-center';
+      div.innerHTML = `
+        <div class="glass-card p-2">
+          <img src="photo${item.id}.jpg" 
+               onerror="this.src='${fallbackImage}'" 
+               onclick="handlePhotoClick('${item.song}', '${item.msg}')" 
+               alt="Memory ${item.id}">
+          <p class="mt-4 text-sm italic text-pink-200">${item.msg}</p>
+        </div>
+      `;
+      gallery.appendChild(div);
     });
 
-    function revealAllOneByOne(){ [...gallery.children].forEach((tile, i) => setTimeout(() => revealTile(tile, i), i * 450)); }
-    window.revealAllOneByOne = revealAllOneByOne;
-    window.addEventListener('load', ()=> launchConfetti());
+    function handlePhotoClick(song, msg) {
+      playAudio(song);
+      showToast(msg);
+      createHearts();
+    }
+
+    // --- Visual Effects ---
+    function showToast(text) {
+      const t = document.getElementById("toast");
+      t.innerText = text;
+      t.className = "show";
+      setTimeout(() => { t.className = t.className.replace("show", ""); }, 3000);
+    }
+
+    function triggerConfetti() {
+      confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#ff4d8d', '#ffffff', '#ffd700']
+      });
+    }
+
+    function createHearts() {
+      for (let i = 0; i < 15; i++) {
+        setTimeout(() => {
+          const heart = document.createElement('div');
+          heart.innerHTML = '❤️';
+          heart.className = 'heart';
+          heart.style.left = Math.random() * 100 + 'vw';
+          heart.style.top = '-5vh';
+          document.body.appendChild(heart);
+          setTimeout(() => heart.remove(), 5000);
+        }, i * 100);
+      }
+    }
+
+    function spawnBalloons() {
+      const container = document.getElementById('balloons-container');
+      for (let i = 0; i < 10; i++) {
+        const b = document.createElement('div');
+        b.className = 'balloon';
+        b.style.left = Math.random() * 100 + 'vw';
+        b.style.animationDelay = Math.random() * 5 + 's';
+        b.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 70%)`;
+        container.appendChild(b);
+      }
+    }
+
+    // --- Countdown Timer ---
+    function updateCountdown() {
+      const now = new Date();
+      // Set to the end of today or a specific date
+      const target = new Date();
+      target.setHours(23, 59, 59);
+      
+      const diff = target - now;
+      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const m = Math.floor((diff / 1000 / 60) % 60);
+
+      document.getElementById('days').innerText = d < 10 ? '0' + d : d;
+      document.getElementById('hours').innerText = h < 10 ? '0' + h : h;
+      document.getElementById('minutes').innerText = m < 10 ? '0' + m : m;
+    }
+
+    // Initialize
+    setInterval(updateCountdown, 1000);
+    spawnBalloons();
   </script>
 </body>
 </html>
