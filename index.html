@@ -47,7 +47,7 @@
     @keyframes flicker{from{transform:translateX(-50%) scale(1) rotate(-2deg)}to{transform:translateX(-50%) scale(1.08) rotate(2deg)}}
     .gallery-card{overflow:hidden;cursor:pointer;transition:transform .3s ease, box-shadow .3s ease}
     .gallery-card:hover{transform:translateY(-4px);box-shadow:0 18px 44px rgba(0,0,0,.28)}
-    .gallery-card img{width:100%;aspect-ratio:1/1.08;object-fit:cover;object-position:center;border-radius:18px;display:block;background:rgba(255,255,255,.08);transition:transform .5s ease}
+    .gallery-card img{width:100%;aspect-ratio:1/1.08;object-fit:cover;object-position:center;border-radius:18px;display:block;background:rgba(255,255,255,.08);transition:transform .5s ease, filter .4s ease, opacity .4s ease}
     .gallery-card:hover img{transform:scale(1.03)}
     .gallery-card p{margin-top:.75rem;font-size:.84rem;line-height:1.45;color:rgba(255,238,245,.92)}
     .note{line-height:1.9;color:rgba(255,238,245,.92)}
@@ -61,11 +61,28 @@
     .photo-popup.show .popup-panel img{transform:scale(1) rotate(0deg)}
     .close-btn{position:absolute;top:-14px;right:-14px;width:44px;height:44px;border-radius:999px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.15);color:#fff;font-size:22px;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 28px rgba(0,0,0,.36)}
     .grid-bg{position:fixed;inset:0;pointer-events:none;opacity:.12;background-image:radial-gradient(circle, rgba(255,255,255,.9) 1px, transparent 1px);background-size:28px 28px;mask-image:radial-gradient(circle at center, rgba(0,0,0,.9), transparent 72%)}
+    .fade-in{animation:fadeIn .6s ease}
+    .zoom-in{animation:zoomIn .6s ease}
+    .slide-left{animation:slideLeft .6s ease}
+    .slide-right{animation:slideRight .6s ease}
+    .rotate-in{animation:rotateIn .6s ease}
+    .pop-in{animation:popIn .45s ease}
+    .flip-in{animation:flipIn .6s ease}
+    .blur-in{animation:blurIn .7s ease}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    @keyframes zoomIn{from{transform:scale(.86);opacity:.2}to{transform:scale(1);opacity:1}}
+    @keyframes slideLeft{from{transform:translateX(30px);opacity:0}to{transform:translateX(0);opacity:1}}
+    @keyframes slideRight{from{transform:translateX(-30px);opacity:0}to{transform:translateX(0);opacity:1}}
+    @keyframes rotateIn{from{transform:rotate(-8deg) scale(.9);opacity:0}to{transform:rotate(0) scale(1);opacity:1}}
+    @keyframes popIn{0%{transform:scale(.6)}80%{transform:scale(1.05)}100%{transform:scale(1)}}
+    @keyframes flipIn{from{transform:perspective(600px) rotateY(70deg);opacity:0}to{transform:perspective(600px) rotateY(0);opacity:1}}
+    @keyframes blurIn{from{filter:blur(10px);opacity:0}to{filter:blur(0);opacity:1}}
   </style>
 </head>
 <body>
   <div class="grid-bg"></div>
   <div id="balloons-container"></div>
+
   <main class="relative z-10 w-full max-w-6xl mx-auto px-4 py-8 md:py-10">
     <section class="text-center mb-10 floating">
       <h1 class="text-5xl md:text-7xl font-extrabold mb-4 glow">Happy Birthday My Love 🎂❤️</h1>
@@ -105,7 +122,9 @@
 
     <section class="glass-card p-6 md:p-10 rounded-[28px] max-w-4xl mx-auto mb-12">
       <h2 class="text-3xl md:text-4xl font-bold text-center mb-6">A Love Note For You</h2>
-      <p class="note text-center max-w-3xl mx-auto text-sm md:text-lg">My love, you make my world feel softer, warmer, and so much more special. Your smile is my favorite sunrise, your voice is my favorite melody, and your presence turns ordinary days into the most beautiful memories. On your birthday, I just want you to feel how deeply you are loved, how precious you are, and how lucky I am to have you in my life. May your year be full of laughter, sweet surprises, endless happiness, and every dream your heart is holding. You are not just my favorite person -- you are my heart, my calm, my joy, and my forever wish.</p>
+      <p class="note text-center max-w-3xl mx-auto text-sm md:text-lg">
+        My love, you make my world feel softer, warmer, and so much more special. Your smile is my favorite sunrise, your voice is my favorite melody, and your presence turns ordinary days into the most beautiful memories. On your birthday, I just want you to feel how deeply you are loved, how precious you are, and how lucky I am to have you in my life. May your year be full of laughter, sweet surprises, endless happiness, and every dream your heart is holding. You are not just my favorite person — you are my heart, my calm, my joy, and my forever wish.
+      </p>
     </section>
 
     <section class="mb-14">
@@ -121,12 +140,17 @@
       <img id="popupImg" alt="preview">
     </div>
   </div>
+
   <audio id="audio-player" preload="auto"></audio>
 
   <script>
     const audioPlayer = document.getElementById('audio-player');
     const gallery = document.getElementById('gallery');
     const balloonContainer = document.getElementById('balloons-container');
+    const cakeScene = document.getElementById('cakeScene');
+    const flame = document.getElementById('flame');
+    const smoke = document.getElementById('smoke');
+
     const photoData = [
       { id: 1, song: 'perfect.mp3', msg: 'You are absolutely perfect to me.' },
       { id: 2, song: 'lover.mp3', msg: 'You are the love that feels like home.' },
@@ -137,6 +161,7 @@
       { id: 7, song: 'paper-rings.mp3', msg: 'I would choose you again and again.' },
       { id: 8, song: 'call-it-what-you-want.mp3', msg: 'Whatever we are, it is beautiful.' }
     ];
+
     const fallbackImages = [
       'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80',
       'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80',
@@ -148,15 +173,82 @@
       'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80'
     ];
 
-    function showToast(text){ const t=document.getElementById('toast'); t.innerText=text; t.className='show'; setTimeout(()=>t.className=t.className.replace('show',''), 2500); }
-    function triggerConfetti(){ confetti({ particleCount: 160, spread: 72, origin: { y: 0.62 }, colors: ['#ff4d8d','#ffd1e7','#ffffff','#ffd76a','#c084fc'] }); }
-    function createHearts(){ for(let i=0;i<12;i++){ setTimeout(()=>{ const h=document.createElement('div'); h.className='heart'; h.textContent=Math.random()>0.5?'💖':'💗'; h.style.left=Math.random()*100+'vw'; h.style.fontSize=(14+Math.random()*16)+'px'; h.style.animationDuration=(4+Math.random()*4)+'s'; document.body.appendChild(h); setTimeout(()=>h.remove(),7000); }, i*90); } }
-    function playAudio(filename){ audioPlayer.pause(); audioPlayer.currentTime=0; audioPlayer.src=filename; audioPlayer.load(); audioPlayer.play().catch(()=>showToast('Audio not found: ' + filename)); }
-    function playMainTheme(){ playAudio('wanna-be-yours.mp3'); showToast('Now Playing: Wanna Be Yours 🎵'); triggerConfetti(); createHearts(); }
-    function burstMode(){ triggerConfetti(); createHearts(); showToast('Magic Burst ✨'); }
-    function blowCandle(){ document.getElementById('cakeScene').classList.add('blown'); showToast('Happy Birthday My Love! 🎂❤️'); triggerConfetti(); createHearts(); }
-    function lightbox(src){ document.getElementById('popupImg').src = src; document.getElementById('photoPopup').classList.add('show'); }
-    function closePhotoPopup(e){ if(e && e.target && e.target.id!=='photoPopup' && !e.target.classList.contains('close-btn')) return; document.getElementById('photoPopup').classList.remove('show'); }
+    function showToast(text){
+      const t=document.getElementById('toast');
+      t.innerText=text;
+      t.className='show';
+      setTimeout(()=>t.className=t.className.replace('show',''), 2500);
+    }
+
+    function triggerConfetti(){
+      confetti({
+        particleCount: 160,
+        spread: 72,
+        origin: { y: 0.62 },
+        colors: ['#ff4d8d','#ffd1e7','#ffffff','#ffd76a','#c084fc']
+      });
+    }
+
+    function createHearts(){
+      for(let i=0;i<12;i++){
+        setTimeout(()=>{
+          const h=document.createElement('div');
+          h.className='heart';
+          h.textContent=Math.random()>0.5?'💖':'💗';
+          h.style.left=Math.random()*100+'vw';
+          h.style.fontSize=(14+Math.random()*16)+'px';
+          h.style.animationDuration=(4+Math.random()*4)+'s';
+          document.body.appendChild(h);
+          setTimeout(()=>h.remove(),7000);
+        }, i*90);
+      }
+    }
+
+    function playAudio(filename){
+      audioPlayer.pause();
+      audioPlayer.currentTime=0;
+      audioPlayer.src=filename;
+      audioPlayer.load();
+      const p = audioPlayer.play();
+      if (p && p.catch) p.catch(()=>showToast('Audio not found: ' + filename));
+    }
+
+    function playMainTheme(){
+      playAudio('wanna-be-yours.mp3');
+      showToast('Now Playing: Wanna Be Yours 🎵');
+      triggerConfetti();
+      createHearts();
+    }
+
+    function burstMode(){
+      triggerConfetti();
+      createHearts();
+      showToast('Magic Burst ✨');
+    }
+
+    function blowCandle(){
+      cakeScene.classList.add('blown');
+      flame.style.display='none';
+      smoke.style.opacity='1';
+      showToast('Happy Birthday My Love! 🎂❤️');
+      playAudio('happy-birthday.mp3');
+      setTimeout(()=>{
+        triggerConfetti();
+        createHearts();
+      }, 200);
+    }
+
+    function lightbox(src){
+      document.getElementById('popupImg').src = src;
+      document.getElementById('photoPopup').classList.add('show');
+    }
+
+    function closePhotoPopup(e){
+      if(e && e.target && e.target.id!=='photoPopup' && !e.target.classList.contains('close-btn')) return;
+      document.getElementById('photoPopup').classList.remove('show');
+    }
+
+    const transitions = ['fade-in','zoom-in','slide-left','slide-right','rotate-in','pop-in','flip-in','blur-in'];
 
     photoData.forEach((item, i) => {
       const src = `photo${item.id}.jpg`;
@@ -166,7 +258,16 @@
       const img = tile.querySelector('img');
       img.src = src;
       img.onerror = () => { img.src = fallbackImages[i % fallbackImages.length]; };
-      img.onclick = () => { showToast('Click on images for surprise ❤️'); lightbox(img.src); playAudio(item.song); triggerConfetti(); createHearts(); };
+      img.onclick = () => {
+        showToast('Click on images for surprise ❤️');
+        img.classList.remove(...transitions);
+        void img.offsetWidth;
+        img.classList.add(transitions[i % transitions.length]);
+        lightbox(img.src);
+        playAudio(item.song);
+        triggerConfetti();
+        createHearts();
+      };
       gallery.appendChild(tile);
     });
 
@@ -199,7 +300,17 @@
     setInterval(updateCountdown, 1000);
     updateCountdown();
     spawnBalloons();
-    setInterval(()=>{ const heart=document.createElement('div'); heart.className='heart'; heart.innerText=Math.random()>0.5?'💗':'💖'; heart.style.left=Math.random()*100+'vw'; heart.style.fontSize=(14+Math.random()*16)+'px'; heart.style.animationDuration=(4+Math.random()*4)+'s'; document.body.appendChild(heart); setTimeout(()=>heart.remove(),7000); }, 1100);
+
+    setInterval(()=>{
+      const heart=document.createElement('div');
+      heart.className='heart';
+      heart.innerText=Math.random()>0.5?'💗':'💖';
+      heart.style.left=Math.random()*100+'vw';
+      heart.style.fontSize=(14+Math.random()*16)+'px';
+      heart.style.animationDuration=(4+Math.random()*4)+'s';
+      document.body.appendChild(heart);
+      setTimeout(()=>heart.remove(),7000);
+    }, 1100);
   </script>
 </body>
 </html>
