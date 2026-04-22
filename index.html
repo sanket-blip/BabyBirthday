@@ -1,4 +1,4 @@
-<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -165,8 +165,19 @@
     function lightbox(src){}
     function showToast(text){ document.getElementById('toastText').textContent = text; document.getElementById('toastBox').showModal(); }
     function openSurprise(){ const dlg = document.getElementById('surpriseBox'); if(dlg && !dlg.open) dlg.showModal(); launchConfetti(); }
+
     let musicPlaying = false;
-    function playSong(){ const audio = document.getElementById('bgMusic'); if(!musicPlaying){ audio.currentTime = 0; audio.play().then(()=>{ musicPlaying = true; showToast('Playing music 🎶'); }).catch(()=>{ showToast('Add wanna-be-yours.mp3 in the same folder'); }); } else { audio.pause(); musicPlaying = false; showToast('Music paused'); } }
+    function playSong(){
+      const audio = document.getElementById('bgMusic');
+      if(!musicPlaying){
+        audio.currentTime = 0;
+        audio.play().then(()=>{ musicPlaying = true; showToast('Playing music 🎶'); }).catch(()=>{ showToast('Add wanna-be-yours.mp3 in the same folder'); });
+      } else {
+        audio.pause();
+        musicPlaying = false;
+        showToast('Music paused');
+      }
+    }
 
     function puffSmoke(id){ const s = document.getElementById(id); if(!s) return; s.classList.remove('puff'); void s.offsetWidth; s.classList.add('puff'); }
     function stopCurrentAudio(){ if(window.currentAudio){ window.currentAudio.pause(); window.currentAudio.currentTime = 0; } }
@@ -177,7 +188,8 @@
         const el = document.getElementById(id);
         if(el){ el.style.opacity='0'; el.style.display='none'; el.style.transform='translateX(-50%) scale(0)'; }
       });
-      puffSmoke('smoke'); puffSmoke('surpriseSmoke');
+      puffSmoke('smoke');
+      puffSmoke('surpriseSmoke');
       showToast('Happy Birthday 🎂');
       launchConfetti();
       stopCurrentAudio();
